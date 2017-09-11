@@ -1,0 +1,20 @@
+Syntax OK
+........F
+
+Failures:
+
+  1) User can retrieve its added blogs
+     Failure/Error: expect(user.blogs.first).to eq blog
+
+     NoMethodError:
+       undefined method `date' for #<Array:0x000000028d6808>
+     # ./session2/challenge/13_classes_iterating_sorting.rb:86:in `=='
+     # ./session2/spec/13.rb:120:in `block (2 levels) in <top (required)>'
+
+Finished in 0.00415 seconds (files took 0.07319 seconds to load)
+9 examples, 1 failure
+
+Failed examples:
+
+rspec ./session2/spec/13.rb:117 # User can retrieve its added blogs
+
