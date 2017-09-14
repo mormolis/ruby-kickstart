@@ -17,3 +17,20 @@
 # match_maker true,  true,  true, true, nil     # => [false, true]
 # match_maker true,  true,  true, 0, nil        # => [false, true]
 
+def match_maker(*arg)
+    det = arg.shift
+    result = []
+    arg.map! { |i|  i == nil ?  false : i }
+    arg.map! { |i| (i != true) && (i!=false) ? true : i }
+    (0...arg.size-1).step(2) do |i|
+        if det
+            result << !(arg[i] == arg[i+1])
+        else
+            result << (arg[i] == arg[i+1])
+            
+        end
+    end
+    result
+end
+
+
