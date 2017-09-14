@@ -8,3 +8,19 @@
 # staircase 4  # => {1 => [], 3 => [2]}
 # staircase 5  # => {1 => [], 3 => [2], 5 =>[2, 4]}
 
+def staircase(num)
+    hash = Hash.new
+    (1..num).each do |key|
+        if key%2==1  
+            hash[key] = []
+            (1..key).each do |value|
+                if value%2==0
+                    hash[key] << value
+                end
+            end
+        end
+    end
+    hash
+end
+
+
