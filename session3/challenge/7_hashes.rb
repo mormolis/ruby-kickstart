@@ -30,11 +30,16 @@ class HTMLTag
     :sans_serif => '"Arial", "Verdana"',
     :monospace  => '"Courier New", "Lucida Console"'
   }
+  COLOR = {
+    :red => "#FF0000",
+    :green => "#00FF00",
+    :blue => "#0000FF"
+  }
 
   attr_accessor :name, :innerHTML, :options
 
   # options: :multiline should be true or false
-  def initialize(name, innerHTML, options)
+  def initialize(name, innerHTML, options={})
     @name, @innerHTML, @options = name, innerHTML, options
   end
 
@@ -43,9 +48,23 @@ class HTMLTag
     FONTS[font]
   end
 
+  def color
+    color = options[:color]
+    COLOR[color]
+  end
+
+#test 7 is not working because of the order of color and font
   def style
-    return nil unless options[:font]
-    "style='font-family:#{font}'"
+    st ="style='"
+    return nil unless (options[:font]  || options[:color])
+    if options[:color] != nil
+      st << "color:#{color}"
+    end
+    if options[:font] != nil
+        st<<"font-family:#{font}"
+    end
+    st <<";'"
+    st    
   end
 
   def to_s
@@ -56,3 +75,5 @@ class HTMLTag
   end
 
 end
+h = HTMLTag.new('li' , 'baseball' , :multiline => false , :color => :red , :font => :sans_serif)
+puts h
