@@ -15,3 +15,14 @@
 # head = {:data => 6, :next => head}
 # print_list head                    # >> "6\n5\n4\n3\n2\n1\n"
 
+def print_list (head)
+    
+    str=""
+    str << "#{head[:data]}\n"
+    while head[:next].is_a? Hash
+        head = head[:next]
+        str << "#{head[:data]}\n"
+        
+    end
+    puts str
+end
