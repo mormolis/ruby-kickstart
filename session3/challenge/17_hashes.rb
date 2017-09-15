@@ -7,3 +7,13 @@
 #
 # print_list_in_reverse head   # >> "1\n2\n"
 
+def print_list_in_reverse (head)      
+        str=[]
+        str << "#{head[:data]}"
+        while head[:next].is_a? Hash
+            head = head[:next]
+            str << "#{head[:data]}"
+            
+        end
+        puts str.reverse.join("\n")
+    end
