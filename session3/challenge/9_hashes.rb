@@ -29,4 +29,9 @@
 # shared [1,2,3], [3,2,1]            # => [{1=>[true, true], 2=>[true, true], 3=>[true, true]}, [1, 2, 3]]
 
 def shared(a, b)
+    h,t={},[]
+    a.each{|i| h[i]=[true,nil]}
+    b.each {|i| h.has_key?(i) ? h[i][1] = true : h[i] = [nil,true]}
+    a.each{|i| t << i if b.include?(i)}
+    return [h,t]
 end
