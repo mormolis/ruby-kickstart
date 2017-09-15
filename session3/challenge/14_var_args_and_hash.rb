@@ -21,11 +21,49 @@
 # problem_14 2,   5, 6, 45, 99, 13, 5, 6,  :problem => :same_ends    # => true
 # problem_14 3,   5, 6, 45, 99, 13, 5, 6,  :problem => :same_ends    # => false
 
-def problem_14
+
+
+def problem_14(*arr, **hash)
+    if !hash.is_a? Hash
+        arr << hash
+        return count_clumps(arr)
+    end
+
+    if hash[:problem] == :same_ends
+        n = arr.shift
+       return same_ends(n, arr) 
+    else
+        return count_clumps(arr)
+    end
 end
 
-def same_ends
+def same_ends(n, *arr)
+    arr = arr.flatten
+    return false if arr.size < n
+    arr1= arr[0,n]
+    arr2 = arr.last(n)
+    return true if arr1 == arr2
+    false
 end
 
-def count_clumps
+def count_clumps(*arr)
+    arr = arr.flatten
+    i=0
+    j=0
+    count=0
+    while i<arr.size
+        j=i+1
+        clump = false
+        
+        while arr[i] == arr[j]
+            clump =true
+            j=j+1
+        end
+        if clump
+            count+=1
+            i = j-1
+        end
+        i=i+1
+    end
+    count
 end
