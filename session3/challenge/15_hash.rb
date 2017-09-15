@@ -38,3 +38,18 @@
 # middle head                        # => 3
 # head = {:data => 6, :next => head}
 # middle head                        # => 3
+
+def middle (head)
+    point = head
+    count = 1
+    while point[:next].is_a? Hash
+        count+=1
+        point = point[:next]
+    end
+    point = head
+    (1..count/2).each{ point = point[:next] }
+    return point[:data]
+    
+end
+
+
