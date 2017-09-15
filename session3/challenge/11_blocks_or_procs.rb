@@ -30,5 +30,13 @@
 # end
 
 
-def array_init
+def array_init(num=5, &block)
+    ar=[]
+    if block
+        (0...num).each { |i| ar << block.call(i)}
+    else
+        (0...num).each{ |i| ar << (i*100).to_s}
+    end
+    ar
 end
+
