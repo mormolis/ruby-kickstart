@@ -26,14 +26,23 @@
 
 
 class Person
-  attr_accessor :name
+  attr_accessor :name , :age, :quote
 
-  def initialize(&initializer)
+  def initialize(args={}, &initializer)
+    @name, @age, @quote = args[:name], args[:age], args[:quote]
+
     @initializer = initializer
-    initializer.call self
+
+    if initializer #example 8 creates a Person object without the block
+      initializer.call( self)
+    end
+
   end
 
   def reinit
     @initializer.call self
   end
 end
+
+
+name = Person.new(:name => 'Kris').name
