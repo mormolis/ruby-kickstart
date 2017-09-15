@@ -29,5 +29,24 @@
 # create it from scratch :)
 
 
-def pathify
+
+def pathify(hash, path="", files=[])
+    
+    hash.each do |k,v| 
+        if v.is_a? Array     
+            v.each{ |i| files << "#{path}/#{k}/#{i}"} 
+            p hash.keys.count
+            path = "" if hash.keys.count == 1
+        elsif v.is_a? Hash
+            pathify(v,path<<"/#{k}", files)
+        end 
+        #path =""      
+    end
+    
+    files
 end
+
+
+
+p pathify({"usr"=>{"bin"=>["ruby"]}, "opt"=>{"local"=>{"bin"=>["sqlite3", "rsync"]}}}) # => ["/usr/bin/ruby", "/opt/local/bin/sqlite3", "/opt/local/bin/rsync"]
+p pathify({"usr"=>{"bin"=>["ruby"], "include"=>["zlib.h"]}}) # => ["/usr/bin/ruby", "/usr/include/zlib.h"]
