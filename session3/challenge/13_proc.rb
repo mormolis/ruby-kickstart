@@ -52,5 +52,20 @@
 #   end
 # end       # => ["a", "m", "r", 1, 3, 4, 9, 2.5, 9.0, 25.8]
 
-def your_sort
+def your_sort(array, &block)
+    if block
+        sorting_proc = block
+    else
+        sorting_proc = Proc.new{|a,b| a<=>b}
+    end
+
+    (0...array.size).each do |i|
+        (0...array.size).each do |j|
+            if sorting_proc.call(array[i],array[j]) == -1
+                array[i],array[j] = array[j], array[i]
+            end
+        end
+    end
+    array
 end
+
