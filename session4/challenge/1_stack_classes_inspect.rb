@@ -58,5 +58,16 @@ stack # =>  (3)2)1)
 
 
 class Stack
-  # **define the inspect method here**
+  def inspect(head = @head, str="(") 
+    if @head == nil && str == "("
+      return str << ")"
+    elsif @head == nil
+      return str
+    end
+    str << @head.data.inspect
+    str << ")"
+    @head = @head.next_node
+    inspect(@head, str) 
+
+  end
 end
