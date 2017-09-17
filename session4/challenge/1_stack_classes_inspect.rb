@@ -59,15 +59,15 @@ stack # =>  (3)2)1)
 
 class Stack
   def inspect(head = @head, str="(") 
-    if @head == nil && str == "("
+    if head == nil && str == "("
       return str << ")"
-    elsif @head == nil
+    elsif head == nil
       return str
     end
-    str << @head.data.inspect
+    str << head.data.inspect
     str << ")"
-    @head = @head.next_node
-    inspect(@head, str) 
+    head = head.next_node
+    inspect(head, str) 
 
   end
 end

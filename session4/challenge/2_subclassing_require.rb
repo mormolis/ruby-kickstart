@@ -17,3 +17,14 @@
 # stack.push 1
 # stack.push 2
 # stack # => [1, 2]
+require File.dirname(__FILE__) + '/1_stack_classes_inspect.rb'
+
+class StackInDisguise < Stack
+    def inspect(head = @head, arr=[])
+        return arr.inspect if head == nil
+        arr.unshift(head.data)
+        head = head.next_node
+        inspect(head, arr)
+    end
+end
+
