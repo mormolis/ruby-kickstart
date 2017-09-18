@@ -25,5 +25,7 @@
 #   The method then returns 45
 #
 
-def passthrough
+def passthrough(range, initializer, &block)
+    range.each {|i| initializer = block.call(initializer,i) }
+    initializer    
 end
