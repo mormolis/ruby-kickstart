@@ -26,6 +26,24 @@
 #   The concat method will do the same thing as the << method
 
 class ApplicationController  
+  def initialize
+    @body_class_str =""
+  end
+
   def body_class
+    def @body_class_str.<<(str) 
+      self!="" ? self.concat(" "+str) : self.concat(str)
+      return self
+    end
+    return @body_class_str
   end
 end
+
+
+
+# my = ApplicationController.new
+# p my.body_class
+# my.body_class << "kaka"
+# p my.body_class
+# my.body_class << "kaka" << "fata"
+# p my.body_class
