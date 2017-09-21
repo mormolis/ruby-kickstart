@@ -22,3 +22,22 @@
 # ff.max                        # => 5
 # ff.min                        # => 1
 # ff.select { |num| num.odd? }  # => [1, 5, 3]
+
+class List
+    include Enumerable
+    def initialize
+        @list=[]
+    end
+    def inspect
+        return "#<List: #{@list.join(", ")}>"
+    end
+    def <<(i)
+        @list << i
+        self
+    end
+
+    def each(&block)
+       @list.each(&block)
+    end
+end
+
