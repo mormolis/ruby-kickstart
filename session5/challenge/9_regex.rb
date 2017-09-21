@@ -18,7 +18,7 @@
 #           <th>Size of the tree</th>
 #           <th>Price of the tree</th>
 #         </tr>
-#         
+        
 #         <!-- Put records here -->
 #         <tr>
 #           <td>American Redbud Tree</td>
@@ -30,5 +30,37 @@
 #     </body>
 #   </html>
 
+require File.dirname(__FILE__) + "/7_regex"
+
+
+
 def trees_to_html(trees)
+    arr = tree_parser(trees)
+    p arr
+    html_text = "<!doctype html>
+                <html>
+                <head>
+                    <title>Green Thumb Nursery</title>
+                </head>
+                <body>
+                    <h1>Catalog</h1>
+                    <table>
+                    <tr>
+                        <td>Type of tree</td>
+                        <td>Size of the tree</td>
+                        <td>Price of the tree</td>
+                    </tr>"
+    arr.each do |sub|
+        html_text += "<tr>
+                        <td>#{sub[0]}</td>
+                        <td>#{sub[1]}</td>
+                        <td>#{sub[2]}</td>
+                    </tr>"
+    end
+    html_text +=  "</table>
+                  </body>
+                  </html>"
+
+    html_text
 end
+

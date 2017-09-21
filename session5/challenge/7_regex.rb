@@ -40,7 +40,7 @@ def tree_parser(trees)
       arr << [$1, $3, $4]
     end
     
-    p arr
+     arr
 
 
 end
