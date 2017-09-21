@@ -33,4 +33,16 @@
 #
 
 def tree_parser(trees)
+    arr=[]
+    
+    trees.each_line do |l|
+      l =~/^(.*)[,;] which ships (at|@) (.*), cost:? (.*)$/i 
+      arr << [$1, $3, $4]
+    end
+    
+    p arr
+
+
 end
+
+
