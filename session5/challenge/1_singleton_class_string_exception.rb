@@ -24,7 +24,39 @@
 #   controller.body_class + 'landing'     # => #<RuntimeError: use << method instead>
 #
 
-class ApplicationController  
-  def body_class
+class ApplicationController 
+
+  def initialize
+    @body_class = ""
+
   end
+
+  def body_class
+    def @body_class.<<(str)
+      puts "self is:"+self
+      return self if self=~/\b#{Regexp.escape(str)}\b/
+      
+      if self==""
+        self.concat(str)
+      else
+        self.concat(" ")
+        self.concat(str)
+      end
+    end
+
+    def @body_class.+(*str)
+      raise "use << method instead"
+    end
+
+    def @body_class.*(*str)
+      raise "use << method instead"
+    end
+
+    def @body_class.[]=(*str)
+      raise "use << method instead"
+    end
+  
+    return @body_class
+  end
+
 end
